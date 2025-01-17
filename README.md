@@ -9,8 +9,8 @@ I wanted to build this project because at our company we record care notes, but 
 
 ## UI
 - Has to include a way to view a resident's care notes
-- Has to include a way to see positive / nuetral / negative care notes
-- Has to show all residents in a locaiton
+- Has to include a way to see positive / neutral / negative care notes
+- Has to show all residents in a location
 
 ## Resident Data and Care Note Data
 - Has to include a list of residents in a database that can be read from and written to
@@ -48,7 +48,7 @@ She selects add new resident
 The UI should make it obvious it has worked
 If she goes to the view residents tab the new resident should be visible
 
-## View All Reisdents
+## View All Residents
 Jane navigates to the View Residents tab
 She should be able to see all the residents and some information about them
 
@@ -89,7 +89,7 @@ I designed my product in Figma - it is available at: https://www.figma.com/desig
 
 ## Implementation Issues
 
-As mentioned before, I wanted to use React to build this, because it's popular and I thought it would be a good industrious desicision - however I ran out of time so I had to use Streamlit.
+As mentioned before, I wanted to use React to build this, because it's popular and I thought it would be a good industry-relevant desicision - however I ran out of time so I had to use Streamlit.
 
 # Project Development
 
@@ -107,6 +107,46 @@ Once the issues were properly backlogged, I started working on developing the ap
 6. **UI Testing** - I needed to check the UI worked properly
 7. **End - To - End Testing** - I needed to ensure that from start to finish the product worked
 
+## Tech Stack
+
+**Front End** - Streamlit
+**Back End** - Python
+**Database** - SQL Alchemy, running a SQLite DB
+**Semantic Analysis** - NLTK, VADER
+
+## Testing
+
+Unit tests cover:
+- Adding a resident using the UI
+- Adding a care note using the UI
+- Testing the sentiment analysis score using the UI
+- Testing tab navigation (bug)
+- Viewing the care notes using the UI
+- Viewing the residents using the UI
+- Testing the database exists
+- Testing the database data quality
+- Testing the sentiment ranges
+- Testing the resident has sufficient history
+- Testing the resident room numbers
+- Testing there is recent activity
+- Testing adding a resident to the DB works
+- Testing adding a care note to the DB works
+
+# Set Up
+
+Download the testing.ipynb, mock_app.py (used in testing for UI) and care_logger.py
+To run the application run the command:
+
+*streamlit run care_logger.py*
+
+The .ipynb by the same name contains the same code for readability, but streamlit only works for .py files.
+
 # Test Driven Development (TTD):
 
 By developing the unit test theories before implementing code, I was able to use TTD in this project. Tests can be found in the testing.ipynb file
+
+# Final Evaluation And Future Improvements
+
+This project was a good learning opportunity for full stack development - however, it has it's shortcomings. I wasn't able to get database pre-population working in time, so please before running tests, enter a couple residents and care notes. Also, the UI testing was really horrible to produce - Streamlit, whilst easier to develop than React, is terrible for testing. Hence the mock_app.py file, which instantiates a mock example of the app, which is not going to be accurate for testing if I were to expand on this project. It also took up a lot of time in a project where time constraints were already a major risk. As a result, it could have been easier to stick with React and build a more comprehensive testing solution in just as much time.
+
+For the future, I would likely completely remove the streamlit code, and replace it with React components. It was quick to implement and saved me time when initially working. I would also really like to resolve the auto population of databases, to reduce the bug backlog
